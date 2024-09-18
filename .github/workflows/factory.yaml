@@ -23,7 +23,7 @@ jobs:
 
   create-pr:
     needs: merge-pr
-    runs-on:public-amd64-small
+    runs-on: public-amd64-small
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
