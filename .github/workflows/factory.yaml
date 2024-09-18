@@ -7,7 +7,7 @@ on:
 
 jobs:
   merge-pr:
-    runs-on: [self-hosted, macOS]
+    runs-on: public-amd64-small
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
