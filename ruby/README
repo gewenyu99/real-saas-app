@@ -1,6 +1,0 @@
-
-To configurate to run
-
-bundle config set path '.bundle'
-bundle install
-bundle exec rspec

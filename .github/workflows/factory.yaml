@@ -40,9 +40,6 @@ jobs:
         id: switch
         run: javascript/src/season/flip
 
-      - name: run test generator
-        run: cargo run --manifest-path=./rust/Cargo.toml
-
       - name: choose next
         id: choose-next
         run: |

@@ -27,12 +27,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_DEBUG: api
         run: |
-          gh workflow run bazel.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
           gh workflow run go.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run java-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
           gh workflow run javascript-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run php.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run python-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run retry-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run ruby-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
-          gh workflow run rust-tests.yaml --ref ${{ inputs.ref }} -f cli-version=${{ inputs.cli-version }}
