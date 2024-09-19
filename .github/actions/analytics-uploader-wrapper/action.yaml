@@ -22,7 +22,7 @@ runs:
       if: "${{ inputs.cli-version != '' }}"
       uses: trunk-io/analytics-uploader@main
       with:
-        org-slug: trunk-staging-org
+        org-slug: totally-real-saas
         token: ${{ inputs.token }}
         cli-version: ${{ inputs.cli-version }}
         junit-paths: ${{ inputs.junit-paths }}
@@ -35,7 +35,7 @@ runs:
       if: "${{ inputs.cli-version == '' }}"
       uses: trunk-io/analytics-uploader@main
       with:
-        org-slug: trunk-staging-org
+        org-slug: totally-real-saas
         token: ${{ inputs.token }}
         junit-paths: ${{ inputs.junit-paths }}
         run: ${{ inputs.run }}
