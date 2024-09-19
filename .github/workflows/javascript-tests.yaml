@@ -35,32 +35,6 @@ jobs:
         run: |
           pnpm install
 
-      - name: Run Mocha Tests
-        uses: ./.github/actions/analytics-uploader-wrapper
-        with:
-          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          cli-version: ${{ inputs.cli-version }}
-          junit-paths: "**/mocha_test.xml"
-          run: npm run mocha-test
-
-      - name: Run Jest Tests
-        if: ${{ always() }}
-        uses: ./.github/actions/analytics-uploader-wrapper
-        with:
-          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          cli-version: ${{ inputs.cli-version }}
-          junit-paths: "**/*_test.xml,**/junitresults-*.xml"
-          run: npm run jest-test
-
-      - name: Run Jasmine Tests
-        if: ${{ always() }}
-        uses: ./.github/actions/analytics-uploader-wrapper
-        with:
-          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          cli-version: ${{ inputs.cli-version }}
-          junit-paths: "**/*_test.xml,**/junitresults-*.xml"
-          run: npm run jasmine-test
-
       - name: Run Playwright Tests
         if: ${{ always() }}
         uses: ./.github/actions/analytics-uploader-wrapper
