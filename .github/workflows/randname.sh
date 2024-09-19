@@ -76,5 +76,5 @@ strings=(
 # Pick a random string
 random_string=${strings[$RANDOM % ${#strings[@]}]}
 
-# Echo the random string
-echo $random_string
+# Echo the random string with title=
+echo "title=$random_string"
