@@ -34,13 +34,9 @@ jobs:
       - name: choose next
         id: choose-next
         run: |
-          if [[ "${{ steps.switch.outputs.season }}" == "Duck" ]]; then
+            chmod +x .github/workflows/randname.sh
             echo "secret_name=WEN_PAT" >> $GITHUB_OUTPUT
-            echo "title=Duck 🦆" >> $GITHUB_OUTPUT
-          else
-            echo "secret_name=WEN_PAT" >> $GITHUB_OUTPUT
-            echo "title=Rabbit 🐇" >> $GITHUB_OUTPUT
-          fi
+            ./randname.sh >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
