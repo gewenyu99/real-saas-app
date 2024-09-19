@@ -34,7 +34,7 @@ jobs:
       - name: choose next
         id: choose-next
         run: |
-            chmod +x .github/workflows/randname.sh
+            chmod +x ./randname.sh
             echo "secret_name=WEN_PAT" >> $GITHUB_OUTPUT
             ./randname.sh >> $GITHUB_OUTPUT
 
