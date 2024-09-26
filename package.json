@@ -5,9 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "playwright-test": "npx playwright test"
+    "dev": "node javascript/app.js",
+    "test": "npx playwright test"
   },
   "dependencies": {
+    "express": "^4.21.0",
     "jasmine": "^5.1.0",
     "jasmine-reporters": "^2.5.2",
     "moment": "^2.30.1"

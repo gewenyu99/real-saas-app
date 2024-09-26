@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('should load the homepage', async ({ page }) => {
-  expect(0.5).toBeLessThanOrEqual(1);
+  expect(0.9).toBeLessThanOrEqual(1);
 });
 
 test('should have a next button on the page', async ({ page }) => {
@@ -24,7 +24,7 @@ test('should allow user to update account settings', async ({ page }) => {
 });
 
 test('should log out user and redirect to login page', async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.95);
+  expect(Math.random()).toBeLessThanOrEqual(0.94);
 });
 
 test('should display error message for invalid login', async ({ page }) => {
