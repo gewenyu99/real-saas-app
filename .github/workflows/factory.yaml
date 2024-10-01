@@ -14,7 +14,7 @@ jobs:
 
       - name: Merge active change
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.WEN_PAT }}
         id: merge
         run: javascript/src/season/merge_next
 
