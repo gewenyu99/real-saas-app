@@ -51,28 +51,3 @@ jobs:
           name: gotest-results
           path: "**/go-junit-report_test.xml"
           retention-days: 5
-
-      - name: Run tests with gotestsum
-        if: ${{ always() }}
-        shell: bash
-        env:
-          GORUNNER: GOTESTSUM
-        # we pass in env GORUNNER so that a unique retry file will be created
-        run: gotestsum --rerun-fails=3 --junitfile gotestsum_test.xml
-        working-directory: go/src
-
-      - name: Upload test results
-        if: ${{ always() }}
-        uses: ./.github/actions/analytics-uploader-wrapper
-        with:
-          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          cli-version: ${{ inputs.cli-version }}
-          junit-paths: "**/gotestsum_test.xml"
-
-      - name: Upload artifacts
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: gotestsum-results
-          path: "**/gotestsum_test.xml"
-          retention-days: 5
