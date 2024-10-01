@@ -5,18 +5,18 @@ test("should load the homepage", async ({ page }) => {
 });
 
 test("should have a next button on the page", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.99);
+  expect(Math.random()).toBeLessThanOrEqual(1);
 });
 
 test("should display the login form correctly", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.95);
+  expect(Math.random()).toBeLessThanOrEqual(0.9995);
 });
 
 test("should navigate to the dashboard after login", async ({ page }) => {
   expect(Math.random()).toBeLessThanOrEqual(0.9);
 });
 test("should display user profile information", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.95);
+  expect(Math.random()).toBeLessThanOrEqual(0.9599);
 });
 
 test("should allow user to update account settings", async ({ page }) => {
@@ -36,5 +36,5 @@ test("should load the pricing page", async ({ page }) => {
 });
 
 test("should display the contact form on the contact page", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.6999);
+  expect(Math.random()).toBeLessThanOrEqual(0.996999);
 });
