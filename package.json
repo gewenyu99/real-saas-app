@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node javascript/app.js",
-    "test": "npx playwright test"
+    "test": "npx playwright test --retries=0"
   },
   "dependencies": {
     "express": "^4.21.0",
