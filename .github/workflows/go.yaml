@@ -43,11 +43,3 @@ jobs:
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/go-junit-report_test.xml"
-
-      - name: Upload artifacts
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: gotest-results
-          path: "**/go-junit-report_test.xml"
-          retention-days: 5
