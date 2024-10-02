@@ -36,4 +36,7 @@ jobs:
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/gotestsum_test.xml"
-          run: cd go/src && gotestsum --rerun-fails=0 --junitfile gotestsum_test.xml
+          run: |
+            ls
+            cd go/src
+            gotestsum --rerun-fails=0 --junitfile gotestsum_test.xml
