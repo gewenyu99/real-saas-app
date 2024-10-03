@@ -17,6 +17,8 @@ on:
 
 jobs:
   test:
+    env:
+      working-directory: go/d
     runs-on: ubuntu-latest
 
     steps:
@@ -36,4 +38,4 @@ jobs:
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
           cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/gotestsum_test.xml"
-          run: gotestsum --rerun-fails=3 --junitfile gotestsum_test.xml
+          run: sh ./gotest.sh
