@@ -10,10 +10,12 @@ test("has title", async ({ page }) => {
 });
 
 test("should display user profile information", async ({ page }) => {
-  await page.goto("http://localhost:3000/user");
-  const locator = page.locator("body > div > h1");
+  await page.goto("http://localhost:3000/user/eli3cruz");
+  const userProfileLocator = page.locator("body > div > h1");
+  const userIdLocator = page.getByText("User ID: eli3cruz");
 
-  await expect(locator).toHaveText(["User Profile"]);
+  await expect(userProfileLocator).toHaveText(["User Profile"]);
+  await expect(userIdLocator).toBeVisible();
 });
 
 test("should load the homepage", async ({ page }) => {

@@ -1,13 +1,12 @@
-import express from 'express';
+import express from "express";
 
 const app = express();
 const port = 3000;
 
+app.get("/", (req, res) => {
+  const ifLogin = Math.random() < 0.8;
 
-app.get('/', (req, res) => {
-    const ifLogin = Math.random() < 0.8;
-
-    res.send(`
+  res.send(`
         <!DOCTYPE html>
         <html>
         <head>
@@ -60,7 +59,7 @@ app.get('/', (req, res) => {
                 <form>
                     <input type="text" placeholder="Username" required>
                     <input type="password" placeholder="Password" required>
-                    ${ifLogin ? '<button type="submit">Login</button>' : ''}
+                    ${ifLogin ? '<button type="submit">Login</button>' : ""}
                 </form>
             </div>
         </body>
@@ -68,15 +67,17 @@ app.get('/', (req, res) => {
     `);
 });
 
-app.get('/user', (req, res) => {
-    const canSeeUser = Math.random() < 0.6;
+app.get("/user/:id", (req, res) => {
+  const canSeeUser = Math.random() < 0.8;
+  const seeCorrectUser = Math.random() < 0.7;
+  const userId = seeCorrectUser ? req.params.id : 1234;
 
-    console.log('canSeeUser', canSeeUser);
-    if (!canSeeUser) {
-        res.status(404).send('User not found');
-        return;
-    }
-    res.send(`
+  console.log("canSeeUser", canSeeUser);
+  if (!canSeeUser) {
+    res.status(404).send("User not found");
+    return;
+  }
+  res.send(`
         <!DOCTYPE html>
         <html>
         <head>
@@ -110,6 +111,7 @@ app.get('/user', (req, res) => {
         <body>
             <div class="user-container">
                 <h1>User Profile</h1>
+                <p>User ID: ${userId}</p>
                 <p>Username: JohnDoe</p>
                 <p>Email: johndoe@example.com</p>
             </div>
@@ -119,5 +121,5 @@ app.get('/user', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${port}`);
 });
