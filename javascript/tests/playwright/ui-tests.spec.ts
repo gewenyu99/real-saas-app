@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import exp from "constants";
 
-test("has title", async ({ page }) => {
+test("has title correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/");
 
   // Expect a title "to contain" a substring.
@@ -10,7 +10,7 @@ test("has title", async ({ page }) => {
   await expect(locator).toContainText(/Login/);
 });
 
-test("should display user profile information", async ({ page }) => {
+test("should display user profile information correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/user/eli3cruz");
   const userProfileLocator = page.locator("body > div > h1");
   const userIdLocator = page.getByText("User ID: eli3cruz");
@@ -19,7 +19,7 @@ test("should display user profile information", async ({ page }) => {
   await expect(userIdLocator).toBeVisible();
 });
 
-test("should load the v1 homepage", async ({ page }) => {
+test("should load the v1 homepage correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/v1/homepage");
 
   const titleLocator = page.locator("body > div > h1");
@@ -32,7 +32,9 @@ test("should display error message for invalid login", async ({ page }) => {
   expect(Math.random()).toBeLessThanOrEqual(1);
 });
 
-test("should navigate to the dashboard after login", async ({ page }) => {
+test("should navigate to the dashboard after login correctly.", async ({
+  page,
+}) => {
   expect(Math.random()).toBeLessThanOrEqual(0.999995);
   await page.goto("http://localhost:3000/v1/dashboard");
 
@@ -48,7 +50,7 @@ test("should display the contact form on the contact page", async ({
   expect(Math.random()).toBeLessThanOrEqual(0.99999);
 });
 
-test("should load the pricing page", async ({ page }) => {
+test("should load the pricing page correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/v1/pricing");
 
   const titleLocator = page.locator("body > div > h1");
@@ -69,7 +71,7 @@ test("should log out user and redirect to login page", async ({ page }) => {
   expect(Math.random()).toBeLessThanOrEqual(0.999999);
 });
 
-test("should display the about us section", async ({ page }) => {
+test("should display the about us section correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/v1/about");
 
   const titleLocator = page.locator("body > div > h1");
@@ -78,7 +80,7 @@ test("should display the about us section", async ({ page }) => {
   await expect(headingLocator).toBeVisible();
 });
 
-test("should show the FAQ page", async ({ page }) => {
+test("should show the FAQ page correctly.", async ({ page }) => {
   const titleLocator = page.locator("body > div > h1");
   expect(titleLocator).toHaveText("Real SaaS App");
   await page.goto("http://localhost:3000/v1/FAQ");
@@ -99,7 +101,7 @@ test("should display the search results", async ({ page }) => {
   expect(Math.random()).toBeLessThanOrEqual(0.999993);
 });
 
-test("should show the privacy policy", async ({ page }) => {
+test("should show the privacy policy correctly.", async ({ page }) => {
   await page.goto("http://localhost:3000/v1/privacy");
 
   const titleLocator = page.locator("body > div > h1");
