@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import exp from "constants";
 
 test("has title", async ({ page }) => {
   await page.goto("http://localhost:3000/");
@@ -18,24 +19,42 @@ test("should display user profile information", async ({ page }) => {
   await expect(userIdLocator).toBeVisible();
 });
 
-test("should load the homepage", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.99);
+test("should load the v1 homepage", async ({ page }) => {
+  await page.goto("http://localhost:3000/v1/homepage");
+
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  const headingLocator = page.getByText("Homepage");
+  await expect(headingLocator).toBeVisible();
 });
 
 test("should display error message for invalid login", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.9);
+  expect(Math.random()).toBeLessThanOrEqual(1);
 });
 
 test("should navigate to the dashboard after login", async ({ page }) => {
   expect(Math.random()).toBeLessThanOrEqual(0.999995);
+  await page.goto("http://localhost:3000/v1/dashboard");
+
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  const headingLocator = page.getByText("Dashboard");
+  await expect(headingLocator).toBeVisible();
 });
 
-test("should display the contact form on the contact page", async ({ page }) => {
+test("should display the contact form on the contact page", async ({
+  page,
+}) => {
   expect(Math.random()).toBeLessThanOrEqual(0.99999);
 });
 
 test("should load the pricing page", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.95);
+  await page.goto("http://localhost:3000/v1/pricing");
+
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  const headingLocator = page.getByText("Pricing");
+  await expect(headingLocator).toBeVisible();
 });
 
 test("should allow user to update account settings", async ({ page }) => {
@@ -51,11 +70,21 @@ test("should log out user and redirect to login page", async ({ page }) => {
 });
 
 test("should display the about us section", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.98);
+  await page.goto("http://localhost:3000/v1/about");
+
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  const headingLocator = page.getByText("About");
+  await expect(headingLocator).toBeVisible();
 });
 
 test("should show the FAQ page", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.97);
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  await page.goto("http://localhost:3000/v1/FAQ");
+
+  const headingLocator = page.getByText("FAQ");
+  await expect(headingLocator).toBeVisible();
 });
 
 test("should display the terms and conditions", async ({ page }) => {
@@ -71,7 +100,12 @@ test("should display the search results", async ({ page }) => {
 });
 
 test("should show the privacy policy", async ({ page }) => {
-  expect(Math.random()).toBeLessThanOrEqual(0.22);
+  await page.goto("http://localhost:3000/v1/privacy");
+
+  const titleLocator = page.locator("body > div > h1");
+  expect(titleLocator).toHaveText("Real SaaS App");
+  const headingLocator = page.getByText("Privacy");
+  await expect(headingLocator).toBeVisible();
 });
 
 test("should display the site map", async ({ page }) => {

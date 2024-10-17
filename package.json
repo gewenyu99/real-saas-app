@@ -1,7 +1,7 @@
 {
-  "name": "Trunk Flake Factory",
+  "name": "Real SaaS App",
   "version": "1.0.0",
-  "description": "Code goes in...flaky tests come out",
+  "description": "Demure and elegant SaaS for the discerning user",
   "type": "module",
   "main": "index.js",
   "scripts": {

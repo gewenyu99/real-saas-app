@@ -120,6 +120,73 @@ app.get("/user/:id", (req, res) => {
     `);
 });
 
+app.get("/v1/:page", (req, res) => {
+  const page = req.params.page;
+
+  const titleCase = (str) => {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  const titleCasedPage = titleCase(page);
+
+  try {
+    // Simulate a potential error
+    if (Math.random() < Math.random() / 4) {
+      throw new Error("Internal server error");
+    }
+  } catch (error) {
+    const statusCode = Math.random() < 0.5 ? 500 : 401;
+    res
+      .status(statusCode)
+      .send(statusCode === 500 ? "Internal Server Error" : "Unauthorized");
+    return;
+  }
+
+  res.send(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                        <title>Page - SaaS App</title>
+                        <style>
+                                body {
+                                        font-family: Arial, sans-serif;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 100vh;
+                                        margin: 0;
+                                        background-color: #f4f4f4;
+                                }
+                                .page-container {
+                                        background-color: #fff;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                        width: 300px;
+                                        text-align: center;
+                                }
+                                .page-container h1 {
+                                        margin-bottom: 20px;
+                                }
+                                .page-container p {
+                                        margin: 10px 0;
+                                }
+                        </style>
+                </head>
+                <body>
+                        <div class="header">
+                            <h1>Real SaaS App</h1>
+                        </div>
+                        <h2>${titleCasedPage}</h2>
+                </body>
+                </html>
+        `);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
