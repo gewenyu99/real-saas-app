@@ -5,12 +5,12 @@ import re
 with open("javascript/src/season.js", "r+", encoding="utf-8") as file:
     content = file.read()
 
-    if "return Animal.Rabbit" in content:
-        content = re.sub("Animal.Rabbit", "Animal.Duck", content)
-        SEASON = "Duck"
+    if "return Animal.Feature" in content:
+        content = re.sub("Animal.Feature", "Animal.Improvement", content)
+        SEASON = "Improvement"
     else:
-        content = re.sub("Animal.Duck", "Animal.Rabbit", content)
-        SEASON = "Rabbit"
+        content = re.sub("Animal.Improvement", "Animal.Feature", content)
+        SEASON = "Feature"
 
     file.seek(0)
     file.write(content)

@@ -1,11 +1,11 @@
 const Animal = {
-  Rabbit: "Rabbit",
-  Duck: "Duck",
+  Feature: "Feature",
+  Improvement: "Improvement",
 };
 
 class Season {
   getCurrent() {
-    return Animal.Rabbit;
+    return Animal.Feature;
   }
 }
 

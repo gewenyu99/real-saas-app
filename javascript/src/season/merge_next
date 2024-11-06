@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 # what is current pr open for season switch
-labels = ["rabbit", "duck"]
+labels = ["feature", "improvement"]
 
 pr_label = None
 for lbl in labels:
