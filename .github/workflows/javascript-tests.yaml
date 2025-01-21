@@ -36,11 +36,17 @@ jobs:
           pnpm install
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright Tests
-        if: ${{ always() }}
-        uses: ./.github/actions/analytics-uploader-wrapper
+      - name: Run Tests
+        id: tests
+        shell: bash
+        run: npm run test
+        continue-on-error: true
+
+      - name: Upload JUnit.xml
+        if: always()
+        uses: trunk-io/analytics-uploader@main
         with:
-          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
-          cli-version: ${{ inputs.cli-version }}
           junit-paths: "**/*_test.xml,**/junitresults-*.xml"
-          run: npm run test
+          org-slug: totally-real-saas
+          token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
+          quarantine: true
