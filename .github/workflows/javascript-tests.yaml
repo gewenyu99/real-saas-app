@@ -5,6 +5,8 @@ on:
     - cron: 0 */6 * * *
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       # trunk-ignore(checkov/CKV_GHA_7)
@@ -50,3 +52,5 @@ jobs:
           org-slug: totally-real-saas
           token: ${{ secrets.TRUNK_STAGING_ORG_API_TOKEN }}
           quarantine: true
+        env:
+          TRUNK_PUBLIC_API_ADDRESS: https://api.trunk-staging.io
