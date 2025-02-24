@@ -27,10 +27,12 @@ steps:
 - script: |
     npm run test
   displayName: 'Run Tests'
-  continueOnError: true
 
 - script: |
     curl -fsSLO --retry 3 https://trunk.io/releases/trunk
     chmod +x ./trunk
-    ./trunk flakytests upload --junit-paths "**/junit.xml" --org-url-slug $(TRUNK_ORG_SLUG) --token $(TRUNK_TOKEN)
+    ./trunk flakytests upload --junit-paths "**/junit.xml" \
+    --org-url-slug $(TRUNK_ORG_SLUG) \
+    --token $(TRUNK_TOKEN)
+  condition: always() # this should always run
   displayName: 'Upload test results to Trunk'
