@@ -8,6 +8,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+  parallel: 1  # This disables parallelism at the pool level
 
 steps:
 - task: NodeTool@0
